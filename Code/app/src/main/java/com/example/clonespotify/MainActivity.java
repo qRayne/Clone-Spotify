@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void connected() {
         // Play a playlist
-        // Rayane : pour chopper le lien d'une playlit -> partager playlist -> copier lien -> recuperer la ligne de caractères
+        // Rayane : pour chopper le lien d'une playlist -> partager playlist -> copier lien -> recuperer la ligne de caractères
 
         /*
         Liste d'Artistes pour le projet Drill International :
@@ -87,9 +87,10 @@ public class MainActivity extends AppCompatActivity {
         Allemagne :
         Luciano  : spotify:artist/3CJKkU0XuElRT1z8rEtIYg?si=0mve4RVuQvG42xxXqam-gA
         reezy : spotify:artist/1ul8iLt2WnFe2UIyovjg7q?si=KiUHNsrBTjKObG3duJpA0w
+        playlist pop : spotify:playlist:37i9dQZF1DZ06evO04kFZs?si=8ea97d076c254dd
 
          */
-        mSpotifyAppRemote.getPlayerApi().play("spotify:playlist:37i9dQZF1DWY6tYEFs22tT?si=4d2d23c7e0ff43db");
+        mSpotifyAppRemote.getPlayerApi().play("spotify:playlist:37i9dQZF1E39kRCPYfGEUC?si=cf3d8320dc04445f");
 
         // Subscribe to PlayerState
         mSpotifyAppRemote.getPlayerApi()
