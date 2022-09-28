@@ -3,3 +3,6 @@
 •	Séparer le modèle de la vue du modèle
 •	Utiliser des techniques vues en classe ( startActivityForResult, intents externes )
 •	Apprendre le bon fonctionnement du SDK à l’aide des fichiers d’aide
+
+
+•	Implements : Il faut change le SHA1 à chaque fois pour fois que le project transfert de données
