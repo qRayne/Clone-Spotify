@@ -16,6 +16,8 @@ import com.spotify.protocol.types.Track;
 
 public class MainActivity extends AppCompatActivity {
 
+    SpotifyDiffuseur spotifyDiffuseur;
+
     private static final String CLIENT_ID = "d180deb12fbe440ea85717907df43bab";
     private static final String REDIRECT_URI = "com.example.clonespotify://callback";
     private SpotifyAppRemote mSpotifyAppRemote;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
 
     @Override
     protected void onStart() {
@@ -65,32 +68,13 @@ public class MainActivity extends AppCompatActivity {
         // Rayane : pour chopper le lien d'une playlist -> partager playlist -> copier lien -> recuperer la ligne de caractères
 
         /*
-        Liste d'Artistes pour le projet Drill International :
-
-        2 artistes par pays :
-        US :
-        Pop smoke : spotify:artist/0eDvMgVFoNV3TpwtrVCoTj?si=lxSunDkgQTCx75to-QLTVw
-        Fivio Foreign : spotify:artist/14CHVeJGrR5xgUGQFV5BVM?si=sZyTKuIRRp22NZDPX4IIGw
-
-        France :
-        Gazo : spotify:artist/5gqmbbfjcikQBzPB5Hv13I?si=F67wd0M4TnKH4POycfPYRQ
-        Ziak : spotify:artist/2ubn2zwyYaLdHOCKnTouU2?si=ZVvxr9HUR-iQ4_EzS78RZA
-
-        Angleterre :
-        Headie one : spotify:artist/6UCQYrcJ6wab6gnQ89OJFh?si=Eqr2NeprRnyJbLcNnCNU-Q
-        Tion Wayne : spotify:artist/7b79bQFziJFedJb75k6hFt?si=rcmvC7NSQBeJ3gAPZGD1uw
-
-        Italie :
-        Rondasosa : spotify:artist/61bQ4nwIioR8w6PGxzpyY3?si=2hjPda_NRjGU9Rc3T4kiag
-        SEVEN 7oo : spotify:artist/1Hg2H3Z46P8lXECM8DYSpU?si=GOBrwdgPTHqvPRyygo1sbA
-
-        Allemagne :
-        Luciano  : spotify:artist/3CJKkU0XuElRT1z8rEtIYg?si=0mve4RVuQvG42xxXqam-gA
-        reezy : spotify:artist/1ul8iLt2WnFe2UIyovjg7q?si=KiUHNsrBTjKObG3duJpA0w
-        playlist pop : spotify:playlist:37i9dQZF1DZ06evO04kFZs?si=8ea97d076c254dd
-
+        UK Drill : spotify:playlist:11jriovFQCrEszFtZ870LT?si=5f1b214923e64338
+        US Drill : spotify:playlist:3gM1w0X80lUFnIS4q7b2zy?si=7a2daf1ac15f409e
+        FR Drill : spotify:playlist:6MENu4VaafdmzKxK33Q2Ej?si=d11df1003d804964
+        GR Drill : spotify:playlist:23peKtmUs6ep6jRse1QPkE?si=6ad4e00c2a4d4d7f
+        IT Drill : spotify:playlist:4qyjCKvniSKkFunRDLAzsr?si=3c77dd2175e44de4
          */
-        mSpotifyAppRemote.getPlayerApi().play("spotify:playlist:37i9dQZF1E39kRCPYfGEUC?si=cf3d8320dc04445f");
+        mSpotifyAppRemote.getPlayerApi().play("spotify:playlist:23peKtmUs6ep6jRse1QPkE?si=6ad4e00c2a4d4d7f");
 
         // Subscribe to PlayerState
         mSpotifyAppRemote.getPlayerApi()
