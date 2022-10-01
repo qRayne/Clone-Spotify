@@ -1,9 +1,14 @@
 package com.example.clonespotify;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.spotify.android.appremote.api.ConnectionParams;
@@ -17,12 +22,13 @@ import com.spotify.protocol.types.Track;
 public class MainActivity extends AppCompatActivity {
 
     SpotifyDiffuseur spotifyDiffuseur;
+    ActivityResultLauncher<Intent> launcher;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        spotifyDiffuseur = new SpotifyDiffuseur(new Playlist("US"),this);
+        spotifyDiffuseur = new SpotifyDiffuseur(new Playlist(getIntent().getExtras().getString("paysProvenance")),this);
     }
 
     @Override

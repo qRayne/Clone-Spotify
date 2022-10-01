@@ -2,6 +2,8 @@ package com.example.clonespotify;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,24 +50,64 @@ public class StartActivity extends AppCompatActivity {
         countryRap.add(R.drawable.america);
 
         // Par defaut on met celui de la france
-        etatImageView = countryRap.get(0);
-        imageView.setImageResource(etatImageView); // les elements dans drawables sont tous int -> pourquoi le transtiper en int ?
+        etatImageView = 0;
+        imageView.setImageResource(countryRap.get(etatImageView)); // les elements dans drawables sont tous int -> pourquoi le transtiper en int ?
     }
 
     public class Ecouteur implements View.OnClickListener{
         @Override
         public void onClick(View view) {
             if (view.equals(buttonBefore)){
-
+                if (etatImageView > 0 && etatImageView <= countryRap.size()){
+                    etatImageView--;
+                    imageView.setImageResource(countryRap.get(etatImageView));
+                }
             }
             else if (view.equals(buttonAfter)){
-
+                if (etatImageView >= 0 && etatImageView < countryRap.size()-1){
+                    etatImageView++;
+                    imageView.setImageResource(countryRap.get(etatImageView));
+                }
             }
             else if (view.equals(buttonPlay)){
-
+                Intent retour = new Intent(getApplicationContext(),MainActivity.class);
+                switch (etatImageView){
+                    case 0:
+                        retour.putExtra("paysProvenance","FR");
+                        break;
+                    case 1:
+                        retour.putExtra("paysProvenance","GR");
+                        break;
+                    case 2:
+                        retour.putExtra("paysProvenance","UK");
+                        break;
+                    case 3:
+                        retour.putExtra("paysProvenance","IT");
+                        break;
+                    case 4:
+                        retour.putExtra("paysProvenance","US");
+                        break;
+                }
+                startActivity(retour);
             }
             else{
-
+                switch (etatImageView){
+                    case 0:
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://fr.wikipedia.org/wiki/Hip-hop_fran%C3%A7ais")));
+                        break;
+                    case 1:
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://fr.wikipedia.org/wiki/Hip-hop_allemand")));
+                        break;
+                    case 2:
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://fr.wikipedia.org/wiki/Hip-hop_britannique")));
+                        break;
+                    case 3:
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://fr.wikipedia.org/wiki/Hip-hop_italien")));
+                        break;
+                    case 4:
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://fr.wikipedia.org/wiki/Hip-hop_aux_%C3%89tats-Unis")));
+                        break;
+                }
             }
         }
     }
