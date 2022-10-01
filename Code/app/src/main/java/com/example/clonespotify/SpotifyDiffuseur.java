@@ -1,15 +1,25 @@
 package com.example.clonespotify;
 
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 import com.spotify.android.appremote.api.ConnectionParams;
 import com.spotify.android.appremote.api.Connector;
 import com.spotify.android.appremote.api.PlayerApi;
 import com.spotify.android.appremote.api.SpotifyAppRemote;
+import com.spotify.protocol.client.CallResult;
+import com.spotify.protocol.types.Artist;
+import com.spotify.protocol.types.PlayerState;
 import com.spotify.protocol.types.Track;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.lang.reflect.Array;
+import java.util.Vector;
 
 public class SpotifyDiffuseur {
     private static final String CLIENT_ID = "d180deb12fbe440ea85717907df43bab";
@@ -63,9 +73,14 @@ public class SpotifyDiffuseur {
                     final Track track = playerState.track;
                     if (track != null) {
                         Log.d("MainActivity", track.name + " by " + track.artist.name);
+                        //Artiste artiste = new Artiste(track.artist.name);
+                        //playlist.ajouterChanson(artiste, new Chanson(track.name,new Artiste(track.artist.name),track.duration));
+                        //loopPlaylist();
                     }
+
                 });
     }
+
 }
 
 

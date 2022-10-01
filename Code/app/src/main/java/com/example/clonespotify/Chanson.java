@@ -4,16 +4,12 @@ public class Chanson {
 
     private String nomChanson;
     private Artiste artiste;
-    private int duree;
-    private String genre;
-    private String paysProvenance;
+    private long duree;
 
-    public Chanson(String nomChanson, Artiste artiste, int duree, String genre, String paysProvenance) {
+    public Chanson(String nomChanson, Artiste artiste, long duree) {
         this.nomChanson = nomChanson;
         this.artiste = artiste;
         this.duree = duree;
-        this.genre = genre;
-        this.paysProvenance = paysProvenance;
     }
 
     public String getNomChanson() {
@@ -32,27 +28,11 @@ public class Chanson {
         this.artiste = artiste;
     }
 
-    public int getDuree() {
+    public long getDuree() {
         return duree;
     }
 
     public void setDuree(int duree) {
         this.duree = duree;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public String getPaysProvenance() {
-        return paysProvenance;
-    }
-
-    public void setPaysProvenance(String paysProvenance) {
-        this.paysProvenance = paysProvenance;
     }
 }

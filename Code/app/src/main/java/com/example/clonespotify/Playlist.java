@@ -48,6 +48,10 @@ public class Playlist {
         return lienSpotify;
     }
 
+    public Vector<Hashtable<Artiste, Chanson>> getListeChansons() {
+        return listeChansons;
+    }
+
     public Vector<Hashtable<Artiste, Chanson>> ajouterChanson(Artiste artiste, Chanson chanson){
         Hashtable<Artiste,Chanson> temp = new Hashtable<>();
         temp.put(artiste, chanson);

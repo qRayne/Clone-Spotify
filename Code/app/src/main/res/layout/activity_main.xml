@@ -20,7 +20,7 @@
         android:textSize="35sp" />
 
     <ImageView
-        android:id="@+id/imageViewCountry3"
+        android:id="@+id/imageViewCover"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:translationY="40dp"
