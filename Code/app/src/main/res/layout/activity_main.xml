@@ -5,5 +5,95 @@
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#191414"
     android:orientation="vertical"
-    tools:context=".MainActivity" />
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/titleApp2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1DB954"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="RAP INTERNATIONAL"
+        android:textAlignment="center"
+        android:textSize="35sp" />
+
+    <ImageView
+        android:id="@+id/imageViewCountry3"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:translationY="40dp"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/textViewArtiste"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:translationY="50sp" />
+
+    <TextView
+        android:id="@+id/textViewChanson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:translationY="60sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:translationY="70sp">
+
+        <Button
+            android:id="@+id/buttonBeforeMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/green_spotify"
+            android:text="@string/before"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttonPauseMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/green_spotify"
+            android:text="@string/pause"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttonPlayMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/green_spotify"
+            android:text="@string/play"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttonAfterMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#1DB954"
+            android:text="@string/next"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonStats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green_spotify"
+        android:text="Stats"
+        android:translationY="100dp" />
+
+</LinearLayout>

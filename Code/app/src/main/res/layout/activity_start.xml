@@ -45,7 +45,7 @@
         android:translationY="70dp">
 
         <Button
-            android:id="@+id/buttonBefore"
+            android:id="@+id/buttonBeforeMusic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -53,7 +53,7 @@
             android:text="BEFORE" />
 
         <Button
-            android:id="@+id/buttonAfter"
+            android:id="@+id/buttonAfterMusic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

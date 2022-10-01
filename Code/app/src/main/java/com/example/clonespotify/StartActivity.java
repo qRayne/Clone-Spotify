@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import java.io.IOException;
 import java.util.Vector;
 
 public class StartActivity extends AppCompatActivity {
@@ -26,8 +25,8 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
         imageView = findViewById(R.id.imageViewCountry);
-        buttonBefore = findViewById(R.id.buttonBefore);
-        buttonAfter = findViewById(R.id.buttonAfter);
+        buttonBefore = findViewById(R.id.buttonBeforeMusic);
+        buttonAfter = findViewById(R.id.buttonAfterMusic);
         buttonPlay = findViewById(R.id.buttonPlay);
         buttonHistory = findViewById(R.id.buttonHistory);
 
