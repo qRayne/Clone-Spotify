@@ -6,11 +6,12 @@ import java.util.Vector;
 public class Playlist {
     private String paysProvenance;
     private String lienSpotify;
-    // private Vector<Hashtable> listeChansons;
+    private Vector<Hashtable<Artiste, Chanson>> listeChansons;
 
     public Playlist(String paysProvenance) {
         this.paysProvenance = paysProvenance;
         this.lienSpotify = setLienSpotify(paysProvenance);
+        this.listeChansons = null; // pas besoin de d'initialiser une playlist avec des chansons directement
     }
 
     public String getPaysProvenance() {
@@ -45,5 +46,12 @@ public class Playlist {
                 break;
         }
         return lienSpotify;
+    }
+
+    public Vector<Hashtable<Artiste, Chanson>> ajouterChanson(Artiste artiste, Chanson chanson){
+        Hashtable<Artiste,Chanson> temp = new Hashtable<>();
+        temp.put(artiste, chanson);
+        listeChansons.add(temp);
+        return listeChansons;
     }
 }
