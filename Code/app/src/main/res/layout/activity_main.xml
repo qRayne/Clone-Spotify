@@ -23,8 +23,24 @@
         android:id="@+id/imageViewCover"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:translationY="40dp"
+        android:translationY="20sp"
         app:srcCompat="@drawable/ic_launcher_background" />
+
+    <SeekBar
+        android:id="@+id/seekBarProgression"
+        android:layout_width="277dp"
+        android:layout_height="wrap_content"
+        android:translationX="70sp"
+        android:translationY="30sp" />
+
+    <TextView
+        android:id="@+id/textViewTemps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:translationY="40sp" />
 
     <TextView
         android:id="@+id/textViewArtiste"
@@ -32,7 +48,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:translationY="50sp" />
 
     <TextView
@@ -41,7 +57,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:translationY="60sp" />
 
     <LinearLayout

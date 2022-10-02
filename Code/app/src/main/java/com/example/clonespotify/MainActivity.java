@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.activity.result.ActivityResult;
@@ -28,11 +29,11 @@ import java.util.Vector;
 public class MainActivity extends AppCompatActivity {
 
     ImageView imageCover;
-    TextView textViewArtiste, textViewChanson;
+    TextView textViewArtiste, textViewChanson,textViewTemps;
+    SeekBar progression;
     Button buttonBeforeMusic, buttonPauseMusic, buttonPlayMusic, buttonAfterMusic,buttonStats;
     SpotifyDiffuseur spotifyDiffuseur;
     Ecouteur ec;
-    Boolean connexion = false;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,14 +50,14 @@ public class MainActivity extends AppCompatActivity {
         buttonStats = findViewById(R.id.buttonStats);
         textViewArtiste = findViewById(R.id.textViewArtiste);
         textViewChanson = findViewById(R.id.textViewChanson);
+        textViewTemps = findViewById(R.id.textViewTemps);
+        progression = findViewById(R.id.seekBarProgression);
 
         buttonBeforeMusic.setOnClickListener(ec);
         buttonPauseMusic.setOnClickListener(ec);
         buttonPlayMusic.setOnClickListener(ec);
         buttonAfterMusic.setOnClickListener(ec);
         buttonStats.setOnClickListener(ec);
-
-        System.out.println(spotifyDiffuseur);
 
     }
 
