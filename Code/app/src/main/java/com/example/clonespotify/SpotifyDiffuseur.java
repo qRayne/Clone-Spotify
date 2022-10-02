@@ -10,6 +10,7 @@ import com.spotify.android.appremote.api.PlayerApi;
 import com.spotify.android.appremote.api.SpotifyAppRemote;
 import com.spotify.protocol.client.CallResult;
 import com.spotify.protocol.types.Artist;
+import com.spotify.protocol.types.ImageUri;
 import com.spotify.protocol.types.PlayerState;
 import com.spotify.protocol.types.Track;
 
@@ -28,6 +29,7 @@ public class SpotifyDiffuseur {
     private Playlist playlist;
     private PlayerApi playerApi;
     private Activity context;
+    private PlayerState playerState;
 
     public SpotifyDiffuseur(Playlist playlist, Activity context) {
         this.playlist = playlist;
@@ -73,14 +75,38 @@ public class SpotifyDiffuseur {
                     final Track track = playerState.track;
                     if (track != null) {
                         Log.d("MainActivity", track.name + " by " + track.artist.name);
-                        //Artiste artiste = new Artiste(track.artist.name);
-                        //playlist.ajouterChanson(artiste, new Chanson(track.name,new Artiste(track.artist.name),track.duration));
-                        //loopPlaylist();
+                        this.playerState = playerState;
                     }
-
                 });
     }
 
+    public void ajouterItemPlaylist(){
+        Artiste temp = new Artiste(playerState.track.artist.name);
+        playlist.ajouterChanson(new Artiste(temp.getNomArtiste()),
+                new Chanson(playerState.track.name,temp,playerState.track.duration,playerState.track.imageUri));
+    }
+
+    public PlayerApi getPlayerApi() {
+        return playerApi;
+    }
+
+    public SpotifyAppRemote getmSpotifyAppRemote() {
+        return mSpotifyAppRemote;
+    }
+
+    public Playlist getPlaylist() {
+        return playlist;
+    }
+
+    public PlayerState getPlayerState(){ return playerState;}
+
+    public void setPlayerApi(PlayerApi playerApi) {
+        this.playerApi = playerApi;
+    }
+
+    public void setPlayerState(PlayerState playerState) {
+        this.playerState = playerState;
+    }
 }
 
 

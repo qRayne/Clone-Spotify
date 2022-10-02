@@ -19,6 +19,13 @@
         android:textAlignment="center"
         android:textSize="35sp" />
 
+    <Button
+        android:id="@+id/buttonAfficherDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green_spotify"
+        android:text="Details" />
+
     <ImageView
         android:id="@+id/imageViewCover"
         android:layout_width="match_parent"
@@ -37,8 +44,10 @@
         android:id="@+id/textViewTemps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:translationY="40sp" />
 
@@ -46,8 +55,10 @@
         android:id="@+id/textViewArtiste"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:translationY="50sp" />
 
@@ -55,8 +66,10 @@
         android:id="@+id/textViewChanson"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:translationY="60sp" />
 

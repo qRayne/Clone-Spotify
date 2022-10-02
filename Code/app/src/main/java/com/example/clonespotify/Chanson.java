@@ -1,15 +1,20 @@
 package com.example.clonespotify;
 
-public class Chanson {
+import com.spotify.protocol.types.ImageUri;
 
+import java.util.concurrent.TimeUnit;
+
+public class Chanson {
     private String nomChanson;
     private Artiste artiste;
     private long duree;
+    private ImageUri cover;
 
-    public Chanson(String nomChanson, Artiste artiste, long duree) {
+    public Chanson(String nomChanson, Artiste artiste, long duree,ImageUri cover) {
         this.nomChanson = nomChanson;
         this.artiste = artiste;
         this.duree = duree;
+        this.cover = cover;
     }
 
     public String getNomChanson() {
@@ -34,5 +39,17 @@ public class Chanson {
 
     public void setDuree(int duree) {
         this.duree = duree;
+    }
+
+    public void setDuree(long duree) {
+        this.duree = duree;
+    }
+
+    public ImageUri getCover() {
+        return cover;
+    }
+
+    public void setCover(ImageUri cover) {
+        this.cover = cover;
     }
 }
