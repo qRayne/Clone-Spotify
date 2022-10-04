@@ -30,7 +30,7 @@ public class Playlist {
         String lienSpotify;
         switch (paysProvenance) {
             case "UK":
-                lienSpotify = "spotify:playlist:11jriovFQCrEszFtZ870LT?si=5f1b214923e64338";
+                lienSpotify = "spotify:playlist:37i9dQZF1DZ06evO07PW9i?si=33672e33a8d84a16";
                 break;
             case "US":
                 lienSpotify = "spotify:playlist:3gM1w0X80lUFnIS4q7b2zy?si=7a2daf1ac15f409e";
