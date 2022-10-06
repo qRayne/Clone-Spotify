@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#191414"
     android:orientation="vertical"
-    tools:context=".StatsActivity">
+    tools:context=".CustomActivity">
 
     <TextView
         android:id="@+id/titleApp3"
@@ -24,12 +24,12 @@
         android:layout_height="wrap_content"
         android:background="#1DB954"
         android:fontFamily="sans-serif-condensed-medium"
-        android:text="STATS"
+        android:text="CUSTOM"
         android:textAlignment="center"
         android:textSize="25sp" />
 
     <ListView
-        android:id="@+id/listViewStats"
+        android:id="@+id/listViewCouleur"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

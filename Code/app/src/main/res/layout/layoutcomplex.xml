@@ -12,19 +12,19 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/nbFrequence"
+            android:id="@+id/numero"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/nomChanson"
+            android:id="@+id/nomCouleurButton"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/nomArtiste"
+            android:id="@+id/nomCouleurHexa"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:text="TextView"

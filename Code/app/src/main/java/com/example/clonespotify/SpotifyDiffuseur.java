@@ -80,12 +80,6 @@ public class SpotifyDiffuseur {
                 });
     }
 
-    public void ajouterItemPlaylist(){
-        Artiste temp = new Artiste(playerState.track.artist.name);
-        playlist.ajouterChanson(new Artiste(temp.getNomArtiste()),
-                new Chanson(playerState.track.name,temp,playerState.track.duration,playerState.track.imageUri));
-    }
-
     public PlayerApi getPlayerApi() {
         return playerApi;
     }

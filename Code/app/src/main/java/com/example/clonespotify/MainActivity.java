@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +24,7 @@ import com.spotify.android.appremote.api.ConnectionParams;
 import com.spotify.android.appremote.api.Connector;
 import com.spotify.android.appremote.api.SpotifyAppRemote;
 
+import com.spotify.protocol.client.CallResult;
 import com.spotify.protocol.client.Subscription;
 import com.spotify.protocol.types.PlayerState;
 import com.spotify.protocol.types.Track;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     Button buttonBeforeMusic, buttonPauseMusic, buttonPlayMusic, buttonAfterMusic,buttonStats,buttonDetails;
     SpotifyDiffuseur spotifyDiffuseur;
     Ecouteur ec;
+    ActivityResultLauncher<Intent> launcher;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         textViewChanson = findViewById(R.id.textViewChanson);
         textViewTemps = findViewById(R.id.textViewTemps);
         progression = findViewById(R.id.seekBarProgression);
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),new customUI());
 
         buttonBeforeMusic.setOnClickListener(ec);
         buttonPauseMusic.setOnClickListener(ec);
@@ -80,6 +84,26 @@ public class MainActivity extends AppCompatActivity {
         spotifyDiffuseur.deconnecterApplication();
     }
 
+    public void afficher(){
+        CallResult<Bitmap> imageSpotify = spotifyDiffuseur.getmSpotifyAppRemote().getImagesApi().getImage(spotifyDiffuseur.getPlayerState().track.imageUri);
+        imageSpotify.setResultCallback(new CallResult.ResultCallback<Bitmap>() {
+            @Override
+            public void onResult(Bitmap data) {
+                imageCover.setImageBitmap(data);
+            }
+        });
+
+        // Ariste
+        textViewArtiste.setText(spotifyDiffuseur.getPlayerState().track.artist.name);
+
+        // Chanson
+        textViewChanson.setText(spotifyDiffuseur.getPlayerState().track.name);
+
+        // temps
+        textViewTemps.setText(DateUtils.formatElapsedTime(
+                spotifyDiffuseur.getPlayerState().track.duration/1000));
+    }
+
     public class Ecouteur implements View.OnClickListener, SeekBar.OnSeekBarChangeListener{
         @Override
         public void onClick(View view) {
@@ -92,18 +116,10 @@ public class MainActivity extends AppCompatActivity {
             else if (view.equals(buttonAfterMusic))
                 spotifyDiffuseur.getPlayerApi().skipNext();
             else if (view.equals(buttonDetails)){
-                // Image
-                //
-
-                // Ariste
-                textViewArtiste.setText(spotifyDiffuseur.getPlayerState().track.artist.name);
-
-                // Chanson
-                textViewChanson.setText(spotifyDiffuseur.getPlayerState().track.name);
-
-                // temps
-                textViewTemps.setText(DateUtils.formatElapsedTime(
-                        spotifyDiffuseur.getPlayerState().track.duration/1000));
+                afficher();
+            }
+            else{
+                launcher.launch(new Intent(MainActivity.this,CustomActivity.class));
             }
         }
 
@@ -120,6 +136,17 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
 
+        }
+    }
+
+    // retour du Intent / boomerang
+    private class customUI implements ActivityResultCallback<ActivityResult>{
+
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            if (result.getResultCode() == 1){
+
+            }
         }
     }
 }
