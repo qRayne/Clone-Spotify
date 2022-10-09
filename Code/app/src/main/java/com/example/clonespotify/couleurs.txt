@@ -1,0 +1,16 @@
+1;LightSalmon;#FFA07A;
+2;Tomato;#FF6347;
+3;Orange;#FFA500;
+4;Yellow;#FFFF00;
+5;DarkKhaki;#BDB76B;
+6;Magenta;#FF00FF;
+7;Indigo;#4B0082;
+8;MediumSpringGreen;#00FA9A;	
+9;DarkGreen;#006400;
+10;Aqua;#00FFFF;
+11;SteelBlue;#4682B4;
+12;Chocolate;#D2691E;
+13;Maroon;#800000;
+14;Gainsboro;#DCDCDC;
+15;White;#FFFFFF;
+16;HoneyDew;#F0FFF0;

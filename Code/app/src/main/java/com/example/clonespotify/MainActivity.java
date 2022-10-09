@@ -2,11 +2,12 @@ package com.example.clonespotify;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import android.text.format.DateUtils;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,28 +17,17 @@ import android.widget.TextView;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.spotify.android.appremote.api.ConnectionParams;
-import com.spotify.android.appremote.api.Connector;
-import com.spotify.android.appremote.api.SpotifyAppRemote;
-
 import com.spotify.protocol.client.CallResult;
-import com.spotify.protocol.client.Subscription;
-import com.spotify.protocol.types.PlayerState;
-import com.spotify.protocol.types.Track;
-import com.spotify.protocol.types.Uri;
-
-import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity {
 
     ImageView imageCover;
-    TextView textViewArtiste, textViewChanson,textViewTemps;
+    TextView textViewArtiste, textViewChanson,textViewTemps,titleApp2;
     SeekBar progression;
-    Button buttonBeforeMusic, buttonPauseMusic, buttonPlayMusic, buttonAfterMusic,buttonStats,buttonDetails;
+    Button buttonBeforeMusic, buttonPauseMusic, buttonPlayMusic, buttonAfterMusic, buttonCustom,buttonDetails;
     SpotifyDiffuseur spotifyDiffuseur;
     Ecouteur ec;
     ActivityResultLauncher<Intent> launcher;
@@ -50,12 +40,13 @@ public class MainActivity extends AppCompatActivity {
         ec = new Ecouteur();
 
         imageCover = findViewById(R.id.imageViewCover);
+        titleApp2 = findViewById(R.id.titleApp2);
         buttonBeforeMusic = findViewById(R.id.buttonBeforeMusic);
         buttonPauseMusic = findViewById(R.id.buttonPauseMusic);
         buttonPlayMusic = findViewById(R.id.buttonPlayMusic);
         buttonAfterMusic = findViewById(R.id.buttonAfterMusic);
         buttonDetails = findViewById(R.id.buttonAfficherDetails); // à enlever après
-        buttonStats = findViewById(R.id.buttonStats);
+        buttonCustom = findViewById(R.id.buttonCustom);
         textViewArtiste = findViewById(R.id.textViewArtiste);
         textViewChanson = findViewById(R.id.textViewChanson);
         textViewTemps = findViewById(R.id.textViewTemps);
@@ -66,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         buttonPauseMusic.setOnClickListener(ec);
         buttonPlayMusic.setOnClickListener(ec);
         buttonAfterMusic.setOnClickListener(ec);
-        buttonStats.setOnClickListener(ec);
+        buttonCustom.setOnClickListener(ec);
         buttonDetails.setOnClickListener(ec);
         progression.setOnSeekBarChangeListener(ec);
     }
@@ -115,12 +106,10 @@ public class MainActivity extends AppCompatActivity {
                 spotifyDiffuseur.getPlayerApi().skipPrevious(); // spotify de base donc pas de skipBefore
             else if (view.equals(buttonAfterMusic))
                 spotifyDiffuseur.getPlayerApi().skipNext();
-            else if (view.equals(buttonDetails)){
+            else if (view.equals(buttonDetails))
                 afficher();
-            }
-            else{
+            else
                 launcher.launch(new Intent(MainActivity.this,CustomActivity.class));
-            }
         }
 
         @Override
@@ -145,8 +134,23 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onActivityResult(ActivityResult result) {
             if (result.getResultCode() == 1){
-
+                String hexaValue = result.getData().getStringExtra("hexaValue");
+                customizeUI(hexaValue);
             }
         }
+    }
+
+    // modifier le player
+    private void customizeUI (String hexaValue){
+        // le titre
+        titleApp2.setBackgroundColor(Color.parseColor(hexaValue));
+
+        // les buttons
+        buttonDetails.setBackgroundColor(Color.parseColor(hexaValue));
+        buttonBeforeMusic.setBackgroundColor(Color.parseColor(hexaValue));
+        buttonPauseMusic.setBackgroundColor(Color.parseColor(hexaValue));
+        buttonPlayMusic.setBackgroundColor(Color.parseColor(hexaValue));
+        buttonAfterMusic.setBackgroundColor(Color.parseColor(hexaValue));
+        buttonCustom.setBackgroundColor(Color.parseColor(hexaValue));
     }
 }

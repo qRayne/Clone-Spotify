@@ -118,11 +118,11 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/buttonStats"
+        android:id="@+id/buttonCustom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/green_spotify"
-        android:text="Stats"
+        android:text="CUSTOM"
         android:translationY="100dp" />
 
 </LinearLayout>

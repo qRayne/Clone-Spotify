@@ -2,12 +2,14 @@ package com.example.clonespotify;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.SeekBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
@@ -53,7 +55,7 @@ public class CustomActivity extends AppCompatActivity {
             Scanner sc = new Scanner(isr);
 
             while(sc.hasNext()){
-                Hashtable<String,String> hashtable= new  Hashtable<String,String>();
+                Hashtable<String,String> hashtable= new Hashtable<>();
                 sc.useDelimiter("[;]");
                 hashtable.put("Numero",sc.next());
                 hashtable.put("nomCouleurButton",sc.next());
@@ -75,10 +77,21 @@ public class CustomActivity extends AppCompatActivity {
 
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            LinearLayout linearLayout = (LinearLayout)adapterView.getItemAtPosition(i);
-            TextView txtView = linearLayout.findViewById(R.id.nomCouleurHexa);
-            System.out.println(txtView.getText());
+            String itemValue = adapterView.getItemAtPosition(i).toString();
+            String hexaValue = "";
 
+            // recuperer la valeur hexa
+            Pattern pattern = Pattern.compile("nomCouleurBackground=(.*)");
+            Matcher matcher = pattern.matcher(itemValue);
+            if (matcher.find()) {
+                hexaValue = matcher.group(1).replace("}","");
+            }
+
+            // le renvoie à l'activite de musique
+            Intent retour = new Intent();
+            retour.putExtra("hexaValue",hexaValue);
+            setResult(1,retour);
+            finish();
         }
     }
 
