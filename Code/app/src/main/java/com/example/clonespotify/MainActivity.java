@@ -91,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
         textViewChanson.setText(spotifyDiffuseur.getPlayerState().track.name);
 
         // temps
-        textViewTemps.setText(DateUtils.formatElapsedTime(
-                spotifyDiffuseur.getPlayerState().track.duration/1000));
+        // si on veut la duree au total :
+        textViewTemps.setText(DateUtils.formatElapsedTime(spotifyDiffuseur.getPlayerState().track.duration/1000));
     }
 
     public class Ecouteur implements View.OnClickListener, SeekBar.OnSeekBarChangeListener{

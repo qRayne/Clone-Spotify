@@ -123,6 +123,6 @@
         android:layout_height="wrap_content"
         android:background="@color/green_spotify"
         android:text="CUSTOM"
-        android:translationY="100dp" />
+        android:translationY="90dp" />
 
 </LinearLayout>
