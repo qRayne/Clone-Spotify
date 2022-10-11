@@ -6,12 +6,11 @@ import java.util.Vector;
 public class Playlist {
     private String paysProvenance;
     private String lienSpotify;
-    private Vector<Hashtable<Artiste, Chanson>> listeChansons;
 
     public Playlist(String paysProvenance) {
         this.paysProvenance = paysProvenance;
         this.lienSpotify = setLienSpotify(paysProvenance);
-        this.listeChansons = null; // pas besoin de d'initialiser une playlist avec des chansons directement
+        // j'utilise la class playlist pour recuperer le pays de provenance -> pour voir quel playlist jouer
     }
 
     public String getPaysProvenance() {
@@ -26,8 +25,9 @@ public class Playlist {
         return lienSpotify;
     }
 
-    public String setLienSpotify(String paysProvenance){
+    public String setLienSpotify(String paysProvenance) {
         String lienSpotify;
+        // playlist us doesnt work -> bug avec l'app spotify
         switch (paysProvenance) {
             case "UK":
                 lienSpotify = "spotify:playlist:37i9dQZF1DZ06evO07PW9i?si=33672e33a8d84a16";
@@ -46,16 +46,5 @@ public class Playlist {
                 break;
         }
         return lienSpotify;
-    }
-
-    public Vector<Hashtable<Artiste, Chanson>> getListeChansons() {
-        return listeChansons;
-    }
-
-    public Vector<Hashtable<Artiste, Chanson>> ajouterChanson(Artiste artiste, Chanson chanson){
-        Hashtable<Artiste,Chanson> temp = new Hashtable<>();
-        temp.put(artiste, chanson);
-        listeChansons.add(temp);
-        return listeChansons;
     }
 }

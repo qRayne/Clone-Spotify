@@ -76,7 +76,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void afficher(){
+        // On creer tous les instances necessaires pour l'affichage
         CallResult<Bitmap> imageSpotify = spotifyDiffuseur.getmSpotifyAppRemote().getImagesApi().getImage(spotifyDiffuseur.getPlayerState().track.imageUri);
+        Artiste artiste = new Artiste(spotifyDiffuseur.getPlayerState().track.artist.name);
+        Chanson chanson = new Chanson(spotifyDiffuseur.getPlayerState().track.name,artiste,spotifyDiffuseur.getPlayerState().track.duration);
+
+        // L'images
         imageSpotify.setResultCallback(new CallResult.ResultCallback<Bitmap>() {
             @Override
             public void onResult(Bitmap data) {
@@ -85,14 +90,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Ariste
-        textViewArtiste.setText(spotifyDiffuseur.getPlayerState().track.artist.name);
+        textViewArtiste.setText(artiste.getNomArtiste());
 
         // Chanson
-        textViewChanson.setText(spotifyDiffuseur.getPlayerState().track.name);
+        textViewChanson.setText(chanson.getNomChanson());
 
         // temps
         // si on veut la duree au total :
-        textViewTemps.setText(DateUtils.formatElapsedTime(spotifyDiffuseur.getPlayerState().track.duration/1000));
+        textViewTemps.setText(DateUtils.formatElapsedTime(chanson.getDuree()/1000));
     }
 
     public class Ecouteur implements View.OnClickListener, SeekBar.OnSeekBarChangeListener{
@@ -104,8 +109,10 @@ public class MainActivity extends AppCompatActivity {
                 spotifyDiffuseur.getPlayerApi().play(spotifyDiffuseur.getPlaylist().getLienSpotify());
             else if (view.equals(buttonBeforeMusic))
                 spotifyDiffuseur.getPlayerApi().skipPrevious(); // spotify de base donc pas de skipBefore
-            else if (view.equals(buttonAfterMusic))
+            else if (view.equals(buttonAfterMusic)) {
                 spotifyDiffuseur.getPlayerApi().skipNext();
+                afficher(); // on change de music donc on change les infos de la chanson
+            }
             else if (view.equals(buttonDetails))
                 afficher();
             else
