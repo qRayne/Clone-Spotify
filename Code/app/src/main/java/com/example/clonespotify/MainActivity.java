@@ -3,8 +3,6 @@ package com.example.clonespotify;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import android.text.format.DateUtils;
@@ -75,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         spotifyDiffuseur.deconnecterApplication();
     }
 
-    public void afficher(){
+    public void afficherDetailsChanson(){
         // On creer tous les instances necessaires pour l'affichage
         CallResult<Bitmap> imageSpotify = spotifyDiffuseur.getmSpotifyAppRemote().getImagesApi().getImage(spotifyDiffuseur.getPlayerState().track.imageUri);
         Artiste artiste = new Artiste(spotifyDiffuseur.getPlayerState().track.artist.name);
@@ -111,10 +109,10 @@ public class MainActivity extends AppCompatActivity {
                 spotifyDiffuseur.getPlayerApi().skipPrevious(); // spotify de base donc pas de skipBefore
             else if (view.equals(buttonAfterMusic)) {
                 spotifyDiffuseur.getPlayerApi().skipNext();
-                afficher(); // on change de music donc on change les infos de la chanson
+                afficherDetailsChanson(); // on change de music donc on change les infos de la chanson
             }
             else if (view.equals(buttonDetails))
-                afficher();
+                afficherDetailsChanson();
             else
                 launcher.launch(new Intent(MainActivity.this,CustomActivity.class));
         }
