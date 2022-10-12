@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.Vector;
 
@@ -56,10 +57,16 @@ public class StartActivity extends AppCompatActivity {
     public class Ecouteur implements View.OnClickListener{
         @Override
         public void onClick(View view) {
+            // Ici on verifie que les buttons before et after ne sorte pas de leurs tailles
+            // permet d'eviter les indices en dehors des pays qu'on a
             if (view.equals(buttonBefore)){
                 if (etatImageView > 0 && etatImageView <= countryRap.size()){
                     etatImageView--;
                     imageView.setImageResource(countryRap.get(etatImageView));
+                }
+                else{
+                    Toast toast = Toast.makeText(getApplicationContext(), "Nous avons pas d'autre pays pour le moment !", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             }
             else if (view.equals(buttonAfter)){
@@ -67,9 +74,14 @@ public class StartActivity extends AppCompatActivity {
                     etatImageView++;
                     imageView.setImageResource(countryRap.get(etatImageView));
                 }
+                else{
+                    Toast toast = Toast.makeText(getApplicationContext(), "Nous avons pas d'autre pays pour le moment !", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
             else if (view.equals(buttonPlay)){
                 Intent retour = new Intent(getApplicationContext(),MainActivity.class);
+                // On recupère le choix du pays et on envoie ce data à notre mainActivity qui elle va lancer la playlist correspondant au pays
                 switch (etatImageView){
                     case 0:
                         retour.putExtra("paysProvenance","FR");
@@ -90,6 +102,8 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(retour);
             }
             else{
+                // Ici si l'utilisateur souhaite comprendre l'histoire du rap dans un certain pays alors il clique sur history
+                // Il sera rediriger vers une page de l'histoire du rap du pays qu'il a choisi
                 switch (etatImageView){
                     case 0:
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://fr.wikipedia.org/wiki/Hip-hop_fran%C3%A7ais")));

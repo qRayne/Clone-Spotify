@@ -5,6 +5,7 @@ import com.spotify.protocol.types.ImageUri;
 import java.util.concurrent.TimeUnit;
 
 public class Chanson {
+    // Une instance de cette classe sera creer quand -> une musique sera lancee et qu'on recupère le nom de la chanson, l'artiste(son nom) et sa duree
     private String nomChanson;
     private Artiste artiste;
     private long duree;

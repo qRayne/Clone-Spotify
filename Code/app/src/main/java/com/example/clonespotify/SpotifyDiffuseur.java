@@ -23,6 +23,7 @@ import java.lang.reflect.Array;
 import java.util.Vector;
 
 public class SpotifyDiffuseur {
+    // Classe très importante : permet la diffusion de spotify
     private static final String CLIENT_ID = "d180deb12fbe440ea85717907df43bab";
     private static final String REDIRECT_URI = "com.example.clonespotify://callback";
     private SpotifyAppRemote mSpotifyAppRemote;
@@ -32,6 +33,8 @@ public class SpotifyDiffuseur {
     private PlayerState playerState;
 
     public SpotifyDiffuseur(Playlist playlist, Activity context) {
+        // ici seule la playlist et le context seront passer en paramètre
+        // Le reste des variables de classes seront instanciee pendant la connexion : connecterApplication
         this.playlist = playlist;
         this.context = context;
     }
@@ -68,14 +71,14 @@ public class SpotifyDiffuseur {
     }
 
     public void connecterApplication(){
-        playerApi = mSpotifyAppRemote.getPlayerApi();
-        playerApi.play(playlist.getLienSpotify());
+        playerApi = mSpotifyAppRemote.getPlayerApi(); // on initalise le playapi
+        playerApi.play(playlist.getLienSpotify()); // on joue le lien spotify du pays dans la playlist
         playerApi.subscribeToPlayerState()
                 .setEventCallback(playerState -> {
                     final Track track = playerState.track;
                     if (track != null) {
                         Log.d("MainActivity", track.name + " by " + track.artist.name);
-                        this.playerState = playerState;
+                        this.playerState = playerState; // on initialise le playerState pour recuperer les donnes
                     }
                 });
     }

@@ -34,16 +34,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // On recupère le choix du pays et on creer un spotifyDifusseur contenant une playlist
         spotifyDiffuseur = new SpotifyDiffuseur(new Playlist(getIntent().getExtras().getString("paysProvenance")),this);
         ec = new Ecouteur();
 
+        // les findViewById
         imageCover = findViewById(R.id.imageViewCover);
         titleApp2 = findViewById(R.id.titleApp2);
         buttonBeforeMusic = findViewById(R.id.buttonBeforeMusic);
         buttonPauseMusic = findViewById(R.id.buttonPauseMusic);
         buttonPlayMusic = findViewById(R.id.buttonPlayMusic);
         buttonAfterMusic = findViewById(R.id.buttonAfterMusic);
-        buttonDetails = findViewById(R.id.buttonAfficherDetails); // à enlever après
+        buttonDetails = findViewById(R.id.buttonAfficherDetails);
         buttonCustom = findViewById(R.id.buttonCustom);
         textViewArtiste = findViewById(R.id.textViewArtiste);
         textViewChanson = findViewById(R.id.textViewChanson);
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         progression = findViewById(R.id.seekBarProgression);
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),new customUI());
 
+        // Les sets dans leurs ecouteurs respectifs
         buttonBeforeMusic.setOnClickListener(ec);
         buttonPauseMusic.setOnClickListener(ec);
         buttonPlayMusic.setOnClickListener(ec);
@@ -70,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+        // si on quitte l'activite alors deconnecte toi de spotify
         spotifyDiffuseur.deconnecterApplication();
     }
 
@@ -101,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
     public class Ecouteur implements View.OnClickListener, SeekBar.OnSeekBarChangeListener{
         @Override
         public void onClick(View view) {
+            // C'est grâce au playApi instancier lors de la connexion qu'on peut interagir avec spotify pour PAUSE, PLAY, SKIP, PREVIOUS
             if (view.equals(buttonPauseMusic))
                 spotifyDiffuseur.getPlayerApi().pause();
             else if (view.equals(buttonPlayMusic))
@@ -114,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             else if (view.equals(buttonDetails))
                 afficherDetailsChanson();
             else
-                launcher.launch(new Intent(MainActivity.this,CustomActivity.class));
+                launcher.launch(new Intent(MainActivity.this,CustomActivity.class)); // si l'utilisateur veut changer le UI de son player
         }
 
         @Override
@@ -139,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onActivityResult(ActivityResult result) {
             if (result.getResultCode() == 1){
+                // on recupère l'hexa mit dans le put data de CustomActivity et on customise le player grâce à cette couleur
                 String hexaValue = result.getData().getStringExtra("hexaValue");
                 customizeUI(hexaValue);
             }
