@@ -12,5 +12,4 @@
 12;Chocolate;#D2691E;
 13;Maroon;#800000;
 14;Gainsboro;#DCDCDC;
-15;White;#FFFFFF;
-16;HoneyDew;#F0FFF0;
+15;Black;#000000;

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         buttonPlayMusic.setOnClickListener(ec);
         buttonAfterMusic.setOnClickListener(ec);
         buttonCustom.setOnClickListener(ec);
-        progression.setOnSeekBarChangeListener(ec);
+        //progression.(ec);
     }
 
     @Override
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         textViewTemps.setText(DateUtils.formatElapsedTime(chanson.getDuree()/1000));
     }
 
-    public class Ecouteur implements View.OnClickListener, SeekBar.OnSeekBarChangeListener{
+    public class Ecouteur implements View.OnClickListener, Chronometer.OnChronometerTickListener {
         @Override
         public void onClick(View view) {
             // C'est grâce au playApi instancier lors de la connexion qu'on peut interagir avec spotify pour PAUSE, PLAY, SKIP, PREVIOUS
@@ -118,18 +119,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-            // recupère le temps de la chanson et la setter dans la progression bar
-        }
-
-        @Override
-        public void onStartTrackingTouch(SeekBar seekBar) {
-
-        }
-
-        @Override
-        public void onStopTrackingTouch(SeekBar seekBar) {
-
+        public void onChronometerTick(Chronometer chronometer) {
+            //((MainActivity)context).progression.setMax((int)track.duration);
+            //((MainActivity)context).progression.setProgress((int)playerState.playbackPosition);
+            progression.setMax((int)spotifyDiffuseur.getPlayerState().track.duration);
+            progression.setProgress((int)spotifyDiffuseur.getPlayerState().playbackPosition);
         }
     }
 

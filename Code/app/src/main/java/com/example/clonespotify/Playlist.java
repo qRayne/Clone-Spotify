@@ -7,7 +7,7 @@ import java.util.Vector;
 public class Playlist {
     // Ici on ne veut pas avoir une classe playlist habituel auquel on aurait une liste de chanson et d'artiste
     // Cette classe sert surtout à cherche une playlist correspondant au pays que l'utilisateur veut ecouter
-    // final pour le lien spotify, car impossible à l'utilsateur de changer pendant l'ecoute de sa playlist
+    // final pour le lien spotify, car impossible à l'utilisateur de changer pendant l'ecoute de sa playlist
     private String paysProvenance;
     private final String lienSpotify;
 
