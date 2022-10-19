@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         buttonPauseMusic = findViewById(R.id.buttonPauseMusic);
         buttonPlayMusic = findViewById(R.id.buttonPlayMusic);
         buttonAfterMusic = findViewById(R.id.buttonAfterMusic);
-        buttonDetails = findViewById(R.id.buttonAfficherDetails);
         buttonCustom = findViewById(R.id.buttonCustom);
         textViewArtiste = findViewById(R.id.textViewArtiste);
         textViewChanson = findViewById(R.id.textViewChanson);
@@ -59,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         buttonPlayMusic.setOnClickListener(ec);
         buttonAfterMusic.setOnClickListener(ec);
         buttonCustom.setOnClickListener(ec);
-        buttonDetails.setOnClickListener(ec);
         progression.setOnSeekBarChangeListener(ec);
     }
 
@@ -116,8 +114,6 @@ public class MainActivity extends AppCompatActivity {
                 spotifyDiffuseur.getPlayerApi().skipNext();
                 afficherDetailsChanson(); // on change de music donc on change les infos de la chanson
             }
-            else if (view.equals(buttonDetails))
-                afficherDetailsChanson();
             else
                 launcher.launch(new Intent(MainActivity.this,CustomActivity.class)); // si l'utilisateur veut changer le UI de son player
         }

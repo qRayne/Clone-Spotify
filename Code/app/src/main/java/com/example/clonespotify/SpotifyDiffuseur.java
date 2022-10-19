@@ -79,6 +79,7 @@ public class SpotifyDiffuseur {
                     if (track != null) {
                         Log.d("MainActivity", track.name + " by " + track.artist.name);
                         this.playerState = playerState; // on initialise le playerState pour recuperer les donnes
+                        ((MainActivity)context).afficherDetailsChanson();
                     }
                 });
     }
