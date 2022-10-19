@@ -85,7 +85,7 @@ public class CustomActivity extends AppCompatActivity {
 
             // recuperer la valeur hexa
             // on recupère la chaine de caractère au complet et on veut retrouver la couleur en hexa
-            Pattern pattern = Pattern.compile("nomCouleurBackground=(.*)");
+            Pattern pattern = Pattern.compile("nomCouleurHexa=(.*)");
             Matcher matcher = pattern.matcher(itemValue);
             if (matcher.find()) {
                 hexaValue = matcher.group(1).replace("}",""); // on enlève le } parce que ca ne fait pas partie des caracètres d'un hexa

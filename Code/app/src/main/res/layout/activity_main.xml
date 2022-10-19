@@ -19,18 +19,11 @@
         android:textAlignment="center"
         android:textSize="35sp" />
 
-    <Button
-        android:id="@+id/buttonAfficherDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/green_spotify"
-        android:text="Details" />
-
     <ImageView
         android:id="@+id/imageViewCover"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:translationY="20sp"
+        android:translationY="30sp"
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <SeekBar
@@ -38,7 +31,7 @@
         android:layout_width="277dp"
         android:layout_height="wrap_content"
         android:translationX="70sp"
-        android:translationY="30sp" />
+        android:translationY="50sp" />
 
     <TextView
         android:id="@+id/textViewTemps"
@@ -49,7 +42,7 @@
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:translationY="40sp" />
+        android:translationY="70sp" />
 
     <TextView
         android:id="@+id/textViewArtiste"
@@ -60,7 +53,7 @@
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:translationY="50sp" />
+        android:translationY="80sp" />
 
     <TextView
         android:id="@+id/textViewChanson"
@@ -71,13 +64,13 @@
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:translationY="60sp" />
+        android:translationY="90sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:translationY="70sp">
+        android:translationY="100dp">
 
         <Button
             android:id="@+id/buttonBeforeMusic"
@@ -123,6 +116,6 @@
         android:layout_height="wrap_content"
         android:background="@color/green_spotify"
         android:text="CUSTOM"
-        android:translationY="90dp" />
+        android:translationY="130dp" />
 
 </LinearLayout>

@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageCover;
     TextView textViewArtiste, textViewChanson,textViewTemps,titleApp2;
     SeekBar progression;
-    Button buttonBeforeMusic, buttonPauseMusic, buttonPlayMusic, buttonAfterMusic, buttonCustom,buttonDetails;
+    Button buttonBeforeMusic, buttonPauseMusic, buttonPlayMusic, buttonAfterMusic, buttonCustom;
     SpotifyDiffuseur spotifyDiffuseur;
     Ecouteur ec;
     ActivityResultLauncher<Intent> launcher;
@@ -112,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
                 spotifyDiffuseur.getPlayerApi().skipPrevious(); // spotify de base donc pas de skipBefore
             else if (view.equals(buttonAfterMusic)) {
                 spotifyDiffuseur.getPlayerApi().skipNext();
-                afficherDetailsChanson(); // on change de music donc on change les infos de la chanson
             }
             else
                 launcher.launch(new Intent(MainActivity.this,CustomActivity.class)); // si l'utilisateur veut changer le UI de son player
@@ -153,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
         titleApp2.setBackgroundColor(Color.parseColor(hexaValue));
 
         // les buttons
-        buttonDetails.setBackgroundColor(Color.parseColor(hexaValue));
         buttonBeforeMusic.setBackgroundColor(Color.parseColor(hexaValue));
         buttonPauseMusic.setBackgroundColor(Color.parseColor(hexaValue));
         buttonPlayMusic.setBackgroundColor(Color.parseColor(hexaValue));
