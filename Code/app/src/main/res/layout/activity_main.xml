@@ -9,6 +9,12 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <Chronometer
+        android:id="@+id/chronometerChanson"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible" />
+
     <TextView
         android:id="@+id/titleApp2"
         android:layout_width="match_parent"

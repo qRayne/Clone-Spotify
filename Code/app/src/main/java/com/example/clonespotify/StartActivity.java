@@ -65,7 +65,7 @@ public class StartActivity extends AppCompatActivity {
                     imageView.setImageResource(countryRap.get(etatImageView));
                 }
                 else{
-                    Toast toast = Toast.makeText(getApplicationContext(), "Nous avons pas d'autre pays pour le moment !", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Nous avons pas d'autres pays pour le moment !", Toast.LENGTH_SHORT);
                     toast.show();
                 }
             }
@@ -75,7 +75,7 @@ public class StartActivity extends AppCompatActivity {
                     imageView.setImageResource(countryRap.get(etatImageView));
                 }
                 else{
-                    Toast toast = Toast.makeText(getApplicationContext(), "Nous avons pas d'autre pays pour le moment !", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Nous avons pas d'autres pays pour le moment !", Toast.LENGTH_SHORT);
                     toast.show();
                 }
             }

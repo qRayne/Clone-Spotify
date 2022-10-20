@@ -27,9 +27,11 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewArtiste, textViewChanson,textViewTemps,titleApp2;
     SeekBar progression;
     Button buttonBeforeMusic, buttonPauseMusic, buttonPlayMusic, buttonAfterMusic, buttonCustom;
+    Chronometer chronometerChanson;
     SpotifyDiffuseur spotifyDiffuseur;
     Ecouteur ec;
     ActivityResultLauncher<Intent> launcher;
+    int tempsProgression;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +52,10 @@ public class MainActivity extends AppCompatActivity {
         textViewArtiste = findViewById(R.id.textViewArtiste);
         textViewChanson = findViewById(R.id.textViewChanson);
         textViewTemps = findViewById(R.id.textViewTemps);
+        chronometerChanson = findViewById(R.id.chronometerChanson);
         progression = findViewById(R.id.seekBarProgression);
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),new customUI());
+        tempsProgression = 0;
 
         // Les sets dans leurs ecouteurs respectifs
         buttonBeforeMusic.setOnClickListener(ec);
@@ -59,7 +63,10 @@ public class MainActivity extends AppCompatActivity {
         buttonPlayMusic.setOnClickListener(ec);
         buttonAfterMusic.setOnClickListener(ec);
         buttonCustom.setOnClickListener(ec);
-        //progression.(ec);
+        chronometerChanson.setOnChronometerTickListener(ec);
+
+        // start le chronometre
+        chronometerChanson.start();
     }
 
     @Override
@@ -111,19 +118,21 @@ public class MainActivity extends AppCompatActivity {
                 spotifyDiffuseur.getPlayerApi().play(spotifyDiffuseur.getPlaylist().getLienSpotify());
             else if (view.equals(buttonBeforeMusic))
                 spotifyDiffuseur.getPlayerApi().skipPrevious(); // spotify de base donc pas de skipBefore
-            else if (view.equals(buttonAfterMusic)) {
-                spotifyDiffuseur.getPlayerApi().skipNext();
-            }
+            else if (view.equals(buttonAfterMusic))
+                spotifyDiffuseur.getPlayerApi().skipNext(); // limiter à 3 skip par heure
             else
                 launcher.launch(new Intent(MainActivity.this,CustomActivity.class)); // si l'utilisateur veut changer le UI de son player
         }
 
         @Override
         public void onChronometerTick(Chronometer chronometer) {
-            //((MainActivity)context).progression.setMax((int)track.duration);
-            //((MainActivity)context).progression.setProgress((int)playerState.playbackPosition);
-            progression.setMax((int)spotifyDiffuseur.getPlayerState().track.duration);
-            progression.setProgress((int)spotifyDiffuseur.getPlayerState().playbackPosition);
+
+            // Commencer à partir de la musique
+            if (progression.getProgress() != 0){
+                tempsProgression = progression.getProgress(); // le temps de progression est le temps actuelle de la musique
+            }
+            tempsProgression++; // incrementera soit à partir de 0 ou à partir de la progression actuelle de la bar
+            progression.setProgress(tempsProgression);
         }
     }
 

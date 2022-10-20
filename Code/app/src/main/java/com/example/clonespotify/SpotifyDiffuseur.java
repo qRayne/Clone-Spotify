@@ -2,6 +2,7 @@ package com.example.clonespotify;
 
 import android.app.Activity;
 import android.content.Context;
+import android.text.format.DateUtils;
 import android.util.Log;
 
 import com.spotify.android.appremote.api.ConnectionParams;
@@ -80,7 +81,8 @@ public class SpotifyDiffuseur {
                         Log.d("MainActivity", track.name + " by " + track.artist.name);
                         this.playerState = playerState; // on initialise le playerState pour recuperer les donnes
                         ((MainActivity)context).afficherDetailsChanson();
-                        System.out.println(playerState.playbackPosition);
+                        ((MainActivity)context).progression.setMax((int)track.duration/1000); // à chaque fois que le chanson change, on change le max de la progress bar
+                        ((MainActivity)context).progression.setProgress((int)playerState.playbackPosition/1000); // si une musique est dejà jouée
                     }
                 });
     }
