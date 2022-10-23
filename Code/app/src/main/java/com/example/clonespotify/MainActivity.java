@@ -21,10 +21,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.spotify.protocol.client.CallResult;
 
+import java.util.concurrent.TimeUnit;
+
 public class MainActivity extends AppCompatActivity {
 
     ImageView imageCover;
-    TextView textViewArtiste, textViewChanson,textViewTemps,titleApp2;
+    TextView textViewArtiste, textViewChanson,textViewTemps,titleApp2,textViewDureeEnCours;
     SeekBar progression;
     Button buttonBeforeMusic, buttonPauseMusic, buttonPlayMusic, buttonAfterMusic, buttonCustom;
     Chronometer chronometerChanson;
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         textViewArtiste = findViewById(R.id.textViewArtiste);
         textViewChanson = findViewById(R.id.textViewChanson);
         textViewTemps = findViewById(R.id.textViewTemps);
+        textViewDureeEnCours = findViewById(R.id.textViewDureeEnCours);
         chronometerChanson = findViewById(R.id.chronometerChanson);
         progression = findViewById(R.id.seekBarProgression);
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),new customUI());
@@ -133,6 +136,10 @@ public class MainActivity extends AppCompatActivity {
             }
             tempsProgression++; // incrementera soit à partir de 0 ou à partir de la progression actuelle de la bar
             progression.setProgress(tempsProgression);
+
+            // Afficher en continue les secondes ecoulees
+            // le premier progress.geProgress est pour les minutes et le seconds pour les secondes
+            textViewDureeEnCours.setText(String.format("%02d:%02d",(progression.getProgress() % 3600) / 60,progression.getProgress() % 60));
         }
     }
 
