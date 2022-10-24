@@ -115,10 +115,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             // C'est grâce au playApi instancier lors de la connexion qu'on peut interagir avec spotify pour PAUSE, PLAY, SKIP, PREVIOUS
-            if (view.equals(buttonPauseMusic))
+            if (view.equals(buttonPauseMusic)){
                 spotifyDiffuseur.getPlayerApi().pause();
-            else if (view.equals(buttonPlayMusic))
+                chronometerChanson.stop();
+            }
+            else if (view.equals(buttonPlayMusic)){
                 spotifyDiffuseur.getPlayerApi().play(spotifyDiffuseur.getPlaylist().getLienSpotify());
+                chronometerChanson.start();
+            }
             else if (view.equals(buttonBeforeMusic))
                 spotifyDiffuseur.getPlayerApi().skipPrevious(); // spotify de base donc pas de skipBefore
             else if (view.equals(buttonAfterMusic))
